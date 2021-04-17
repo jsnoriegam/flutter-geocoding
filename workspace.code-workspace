@@ -1,11 +1,10 @@
 {
 	"folders": [
 		{
-			"path": "geocoding_platform_interface"
+			"path": "geocoding"
 		},
 		{
-			"path": "geocoding"
+			"path": "geocoding_platform_interface"
 		}
-	],
-	"settings": {}
+	]
 }
