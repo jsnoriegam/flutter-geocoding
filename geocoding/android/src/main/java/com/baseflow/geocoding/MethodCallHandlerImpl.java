@@ -101,7 +101,7 @@ final class MethodCallHandlerImpl implements MethodCallHandler {
                 return;
             }
 
-            result.success(AddressMapper.toLocationHashMapList(addresses));
+            result.success(AddressMapper.toAddressHashMapList(addresses));
         } catch (IOException ex) {
             result.error(
                     "IO_ERROR",

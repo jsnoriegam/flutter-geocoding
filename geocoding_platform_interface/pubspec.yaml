@@ -1,4 +1,5 @@
 name: geocoding_platform_interface
+publish_to: none
 description: A common platform interface for the geocoding plugin.
 homepage: https://github.com/baseflow/flutter-geocoding/tree/master/geocoding_platform_interface
 # NOTE: We strongly prefer non-breaking changes, even at the expense of a

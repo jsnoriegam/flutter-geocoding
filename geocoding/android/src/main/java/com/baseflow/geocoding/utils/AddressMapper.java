@@ -37,6 +37,9 @@ public class AddressMapper {
         placemark.put("subAdministrativeArea", address.getSubAdminArea());
         placemark.put("locality", address.getLocality());
         placemark.put("subLocality", address.getSubLocality());
+        placemark.put("latitude", address.getLatitude());
+        placemark.put("longitude", address.getLongitude());
+        placemark.put("timestamp", Calendar.getInstance(TimeZone.getTimeZone("UTC")).getTimeInMillis());
 
         return placemark;
     }

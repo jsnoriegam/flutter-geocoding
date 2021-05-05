@@ -36,6 +36,9 @@
         @"subAdministrativeArea": self.subAdministrativeArea == nil ? @"" : self.subAdministrativeArea,
         @"locality": self.locality == nil ? @"" : self.locality,
         @"subLocality": self.subLocality == nil ? @"" : self.subLocality,
+        @"latitude": @(self.location.coordinate.latitude),
+        @"longitude": @(self.location.coordinate.longitude),
+        @"timestamp": @([CLPlacemark currentTimeInMilliSeconds: self.location.timestamp]),
     }];
     
     return dict;
