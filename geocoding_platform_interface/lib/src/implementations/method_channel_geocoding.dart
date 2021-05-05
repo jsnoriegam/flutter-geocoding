@@ -53,15 +53,14 @@ class MethodChannelGeocoding extends GeocodingPlatform {
       parameters['localeIdentifier'] = localeIdentifier;
     }
 
-    final placemarks = await methodChannel.invokeMethod(
-        'placemarkFromCoordinates', parameters);
+    final placemarks = await methodChannel.invokeMethod('placemarkFromCoordinates', parameters);
     return Placemark.fromMaps(placemarks);
   }
 
   @override
   Future<List<Placemark>> placemarkFromAddress(
     String address, {
-    String localeIdentifier,
+    String? localeIdentifier,
   }) async {
     final parameters = <String, String>{
       'address': address,
@@ -71,8 +70,7 @@ class MethodChannelGeocoding extends GeocodingPlatform {
       parameters['localeIdentifier'] = localeIdentifier;
     }
 
-    final placemarks =
-        await methodChannel.invokeMethod('locationFromAddress', parameters);
+    final placemarks = await methodChannel.invokeMethod('locationFromAddress', parameters);
     return Placemark.fromMaps(placemarks);
   }
 

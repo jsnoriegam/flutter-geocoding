@@ -74,13 +74,13 @@ class Placemark {
   final String? subThoroughfare;
 
   /// The latitude associated with the placemark.
-  final double latitude;
+  final double? latitude;
 
   /// The longitude associated with the placemark.
-  final double longitude;
+  final double? longitude;
 
   /// The UTC timestamp the coordinates have been requested.
-  final DateTime timestamp;
+  final DateTime? timestamp;
 
   @override
   bool operator ==(dynamic o) =>
@@ -135,10 +135,7 @@ class Placemark {
 
     final Map<dynamic, dynamic> placemarkMap = message;
 
-    final timestamp = placemarkMap['timestamp'] != null
-        ? DateTime.fromMillisecondsSinceEpoch(placemarkMap['timestamp'].toInt(),
-            isUtc: true)
-        : null;
+    final timestamp = placemarkMap['timestamp'] != null ? DateTime.fromMillisecondsSinceEpoch(placemarkMap['timestamp'].toInt(), isUtc: true) : null;
 
     return Placemark._(
       name: placemarkMap['name'] ?? '',

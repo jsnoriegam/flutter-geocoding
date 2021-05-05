@@ -60,7 +60,7 @@ Future<List<Placemark>> placemarkFromCoordinates(
 /// [languageCode]_[countryCode] (eg. en_US or nl_NL).
 Future<List<Placemark>> placemarkFromAddress(
   String address, {
-  String localeIdentifier,
+  String? localeIdentifier,
 }) =>
     GeocodingPlatform.instance.placemarkFromAddress(
       address,
