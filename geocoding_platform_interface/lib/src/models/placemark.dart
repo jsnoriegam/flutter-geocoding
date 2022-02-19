@@ -18,6 +18,9 @@ class Placemark {
     this.subLocality,
     this.thoroughfare,
     this.subThoroughfare,
+    this.latitude,
+    this.longitude,
+    this.timestamp,
   });
 
   Placemark._({
@@ -32,6 +35,9 @@ class Placemark {
     this.subLocality,
     this.thoroughfare,
     this.subThoroughfare,
+    this.latitude,
+    this.longitude,
+    this.timestamp,
   });
 
   /// The name associated with the placemark.
@@ -67,6 +73,15 @@ class Placemark {
   /// Additional street address information for the placemark.
   final String? subThoroughfare;
 
+  /// The latitude associated with the placemark.
+  final double? latitude;
+
+  /// The longitude associated with the placemark.
+  final double? longitude;
+
+  /// The UTC timestamp the coordinates have been requested.
+  final DateTime? timestamp;
+
   @override
   bool operator ==(dynamic o) =>
       o is Placemark &&
@@ -80,7 +95,10 @@ class Placemark {
       o.subAdministrativeArea == subAdministrativeArea &&
       o.subLocality == subLocality &&
       o.subThoroughfare == subThoroughfare &&
-      o.thoroughfare == thoroughfare;
+      o.thoroughfare == thoroughfare &&
+      o.latitude == latitude &&
+      o.longitude == longitude &&
+      o.timestamp == timestamp;
 
   @override
   int get hashCode =>
@@ -94,7 +112,10 @@ class Placemark {
       subAdministrativeArea.hashCode ^
       subLocality.hashCode ^
       subThoroughfare.hashCode ^
-      thoroughfare.hashCode;
+      thoroughfare.hashCode ^
+      latitude.hashCode ^
+      longitude.hashCode ^
+      timestamp.hashCode;
 
   /// Converts a list of [Map] instances to a list of [Placemark] instances.
   static List<Placemark> fromMaps(dynamic message) {
@@ -114,6 +135,8 @@ class Placemark {
 
     final Map<dynamic, dynamic> placemarkMap = message;
 
+    final timestamp = placemarkMap['timestamp'] != null ? DateTime.fromMillisecondsSinceEpoch(placemarkMap['timestamp'].toInt(), isUtc: true) : null;
+
     return Placemark._(
       name: placemarkMap['name'] ?? '',
       street: placemarkMap['street'] ?? '',
@@ -126,6 +149,9 @@ class Placemark {
       subLocality: placemarkMap['subLocality'] ?? '',
       thoroughfare: placemarkMap['thoroughfare'] ?? '',
       subThoroughfare: placemarkMap['subThoroughfare'] ?? '',
+      latitude: placemarkMap['latitude'] ?? null,
+      longitude: placemarkMap['longitude'] ?? null,
+      timestamp: timestamp,
     );
   }
 
@@ -143,6 +169,9 @@ class Placemark {
         'subLocality': subLocality,
         'thoroughfare': thoroughfare,
         'subThoroughfare': subThoroughfare,
+        'latitude': latitude,
+        'longitude': longitude,
+        'timestamp': timestamp?.millisecondsSinceEpoch ?? null,
       };
 
   @override
@@ -158,6 +187,9 @@ class Placemark {
       Locality: $locality,
       Sublocality: $subLocality,
       Thoroughfare: $thoroughfare,
-      Subthoroughfare: $subThoroughfare''';
+      Subthoroughfare: $subThoroughfare,
+      Latitude: $latitude,
+      Longitude: $longitude,
+      Timestamp: $timestamp''';
   }
 }
